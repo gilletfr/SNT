@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polynésie Française - Paradis du Pacifique</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background: linear-gradient(to bottom, #00c6ff, #0072ff);
+}
+
+/* NAVIGATION */
+nav{
+    position:fixed;
+    width:100%;
+    background:rgba(0,0,0,0.6);
+    padding:15px;
+    text-align:center;
+    z-index:1000;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 25px;
+    font-weight:bold;
+    font-size:18px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#00f7ff;
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    background:url('photos/ile.jpg') center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.hero-content{
+    background:rgba(0,0,0,0.5);
+    padding:40px;
+    border-radius:20px;
+}
+
+.hero h1{
+    font-size:55px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-top:15px;
+}
+
+/* SECTIONS */
+section{
+    padding:100px 10%;
+    background:white;
+}
+
+section h2{
+    text-align:center;
+    font-size:40px;
+    margin-bottom:60px;
+    color:#0072ff;
+}
+
+/* CONTENT FLEX */
+.content{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    margin-bottom:70px;
+    flex-wrap:wrap;
+}
+
+.content img{
+    width:500px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.content p{
+    flex:1;
+    font-size:18px;
+    line-height:1.6;
+}
+
+/* CARDS */
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:#f4f9ff;
+    width:300px;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.05);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.card h3{
+    padding:15px;
+    color:#0072ff;
+}
+
+.card p{
+    padding:0 15px 20px 15px;
+}
+
+/* FOOTER */
+footer{
+    background:#0072ff;
+    text-align:center;
+    padding:20px;
+    color:white;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .content{
+        flex-direction:column;
+    }
+
+    .content img{
+        width:100%;
+    }
+}
+/* SECTION JO AVEC EFFET VAGUE */
+#jo{
+    position: relative;
+    background: linear-gradient(to bottom, #0099cc, #003366);
+    color: white;
+    overflow: hidden;
+}
+
+#jo h2{
+    color: white;
+}
+
+#jo::before{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:200%;
+    height:150px;
+    background:url("Photos\ile.jpg");
+    background-repeat:repeat-x;
+    background-size:contain;
+    animation:wave 10s linear infinite;
+    opacity:0.4;
+}
+
+@keyframes wave{
+    0%{ transform: translateX(0); }
+    100%{ transform: translateX(-50%); }
+}
+/* VAGUE ANIMÉE POUR LA SECTION JO */
+#jo {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #0099cc, #003366);
+    color: white;
+    padding: 100px 10%;
+}
+
+#jo h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* Vagues en fond */
+#jo::before, #jo::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200px;
+    left: 0;
+    background: url("https://svgshare.com/i/15xv.svg") repeat-x;
+    background-size: contain;
+    opacity: 0.4;
+    animation: wave 12s linear infinite;
+    z-index: 0;
+}
+
+#jo::after {
+    bottom: 0;
+    transform: rotate(180deg);
+    opacity: 0.3;
+}
+
+#jo::before {
+    bottom: -50px;
+}
+
+@keyframes wave {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Contenu au-dessus des vagues */
+#jo .content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 70px;
+}
+
+#jo .content img {
+    width: 500px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+#jo .content p {
+    flex: 1;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#iles">Les Îles</a>
+    <a href="#lieux">Lieux à visiter</a>
+    <a href="#activites">Activités et évènements</a>
+    <a href="#jeux olympiques">JO</a>
+</nav>
+
+<!-- ACCUEIL -->
+<div class="hero" id="accueil">
+    <div class="hero-content">
+        <h1>Bienvenue en Polynésie Française 🌴</h1>
+        <p>Un paradis tropical aux lagons turquoise et paysages spectaculaires</p>
+    </div>
+</div>
+
+<section>
+    <h2>Un Joyau du Pacifique</h2>
+    <div class="content">
+        <img src="Photos/carte.jpg" alt="Lagon Polynésie">
+        <p>
+            La Polynésie Française est un territoire d’outre-mer situé au cœur de l’océan Pacifique. 
+            Elle est composée de 118 îles réparties sur cinq archipels.
+            Ses plages de sable blanc, ses lagons cristallins et ses montagnes volcaniques 
+            en font une destination de rêve pour les voyageurs du monde entier.
+        </p>
+    </div>
+</section>
+
+<!-- ILES -->
+<section id="iles">
+    <h2>Les Îles Principales 🏝️</h2>
+
+    <div class="content">
+        <img src="Photos/bora bora.jpeg" alt="Bora Bora">
+        <p>
+            <strong>Bora Bora</strong> est célèbre pour son lagon aux nuances infinies de bleu.
+            Surnommée la "Perle du Pacifique", elle est réputée pour ses bungalows sur pilotis 
+            et ses paysages idylliques.
+        </p>
+    </div>
+
+    <div class="content">
+        <p>
+            <strong>Moorea</strong>, située près de Tahiti, séduit par ses montagnes majestueuses 
+            et ses baies spectaculaires comme la baie de Cook. 
+            C’est une île idéale pour les randonnées et les excursions marines.
+        </p>
+        <img src="Photos/moorea.jpg" alt="Moorea">
+    </div>
+
+    <div class="content">
+        <img src="Photos/tahiti.jpg" alt="Tahiti">
+        <p>
+            <strong>Tahiti</strong> est la plus grande île et le cœur culturel de la Polynésie.
+            Elle offre un mélange parfait entre traditions locales, marchés colorés 
+            et paysages volcaniques impressionnants.
+        </p>
+    </div>
+</section>
+
+<!-- LIEUX A VISITER -->
+<section id="lieux">
+    <h2>Lieux Incontournables 📍</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21" alt="Plongée">
+            <h3>Les Lagons</h3>
+            <p>
+                <strong>
+                Explorez des eaux translucides riches en coraux et poissons tropicaux.
+                La Polynésie Française est un véritable terrain d’aventure. 
+                Les lagons turquoise offrent parmi les plus beaux sites de <strong>plongée sous-marine</strong> au monde. 
+                Les récifs coralliens abritent des poissons tropicaux multicolores, des raies manta majestueuses 
+                et parfois même des requins inoffensifs.
+                <br><br>
+                Le snorkeling est accessible à tous et permet d’explorer facilement les eaux peu profondes, 
+                tandis que les plongeurs expérimentés peuvent découvrir des passes spectaculaires.</p>
+        </div>
+
+        <div class="card">
+            <img src="Photos/montagne.jpg" alt="Montagne Polynésie">
+            <h3>Montagnes Volcaniques</h3>
+            <p>
+                <strong>
+                Les montagnes volcaniques de la Polynésie Française offrent des panoramas spectaculaires et des expériences inoubliables pour tous les amateurs de nature et de sensations fortes. 
+                Ces sommets majestueux, souvent recouverts d’une végétation luxuriante et ponctués de cascades cachées, dominent les lagons turquoise et les vallées profondes. 
+                <br><br>
+                Les randonneurs peuvent découvrir des sentiers variés, allant de promenades faciles à des ascensions plus exigeantes, avec à chaque détour des points de vue époustouflants sur les baies, les plages et les forêts tropicales. 
+                <br><br>
+                Les volcans endormis racontent l’histoire géologique de ces îles, témoignant de millions d’années de formation et de l’énergie puissante qui a sculpté ces paysages uniques. 
+                <br><br>
+                Que vous soyez passionné de photographie, d’aventure ou simplement en quête de sérénité, les montagnes volcaniques de la Polynésie Française sont un incontournable qui relie beauté naturelle et émotions intenses.
+            </p>
+        </div>
+        
+
+        <div class="card">
+            <img src="Photos/plat.jpg" alt="Poisson cru au lait de coco">
+            <h3>Marchés & Culture – Les Plats Traditionnels 🍽️</h3>
+            <p>
+                <strong>
+                Impossible de découvrir la Polynésie Française sans goûter à sa gastronomie locale.
+                Le plat emblématique est le <strong>poisson cru au lait de coco</strong>, préparé 
+                avec du thon ultra-frais, mariné au citron vert puis mélangé à du lait de coco onctueux.
+                <br><br>
+                Sur les marchés colorés de Papeete, les étals débordent de fruits tropicaux :
+                mangues, papayes, ananas et noix de coco fraîchement ouvertes.
+                <br><br>
+                On y trouve aussi le <strong>ma’a tinito</strong> (plat d’influence chinoise),
+                le poulet fafa (cuit avec des feuilles de taro),
+                et les délicieux beignets de banane appelés <strong>firi firi</strong>.
+                <br><br>
+                Les marchés sont de véritables lieux de vie où se mêlent senteurs exotiques,
+                artisanat local et musique traditionnelle.
+            </p>
+        </div>
+        
+
+    </div>
+</section>
+
+<!-- ACTIVITES ET EVENEMENTS -->
+
+<!-- ACTIVITES DETAILLEES + JO -->
+<section id="activites">
+    <h2>Activités & Événements Exceptionnels 🌊🏄‍♂️</h2>
+
+<!-- SECTION DANSE TAHITIENNE -->
+<section id="danse">
+
+    <h2>La Danse Tahitienne 🌺💃</h2>
+
+    <div class="content">
+        <img src="Photos\danse.jpg" alt="Danse Tahitienne traditionnelle">
+        <p>
+            La danse tahitienne est l’une des expressions culturelles les plus fortes 
+            de la Polynésie Française. Elle raconte l’histoire des ancêtres, 
+            les légendes des îles et la relation profonde entre l’homme et l’océan.
+            <br><br>
+            Autrefois interdite durant la période coloniale, elle est aujourd’hui 
+            un symbole puissant d’identité et de fierté polynésienne.
+        </p>
+    </div>
+
+    <div class="content">
+        <p>
+            Il existe plusieurs styles de danse traditionnelle :
+            <br><br>
+            🔥 <strong>ʻOte’a</strong> : danse rapide et énergique accompagnée de percussions.<br>
+            🌊 <strong>Aparima</strong> : danse plus douce et expressive racontant une histoire avec les mains.<br>
+            🌺 <strong>Hivinau</strong> : danse festive pratiquée en groupe.
+            <br><br>
+            Les costumes sont fabriqués à partir de fibres naturelles, de coquillages 
+            et de fleurs colorées, rendant chaque spectacle spectaculaire.
+        </p>
+        <img src="Photos/danse2.webp" alt="Spectacle danse Polynésie">
+    </div>
+
+    <div class="content">
+        <img src="Photos/danse3.jpg" alt="Festival Heiva danse">
+        <p>
+            Chaque année, le célèbre festival <strong>Heiva i Tahiti</strong> 
+            rassemble les meilleurs groupes de danse de l’archipel.
+            <br><br>
+            Cet événement est un moment fort où musique, chants traditionnels 
+            et performances impressionnantes attirent des visiteurs du monde entier.
+            <br><br>
+            Assister à un spectacle de danse tahitienne, c’est vivre une expérience 
+            intense, vibrante et profondément authentique.
+        </p>
+    </div>
+
+</section>
+
+        </p>
+    </div>
+
+    <div class="content">
+        <p>
+            Les amateurs de sensations fortes peuvent pratiquer le <strong>surf</strong>, 
+            le paddle, le jet-ski ou encore le kitesurf. 
+            Les montagnes volcaniques offrent également des possibilités de 
+            <strong>randonnées panoramiques</strong> à travers une végétation luxuriante.
+            <br><br>
+            Des excursions en bateau permettent de découvrir les motus (îlots) isolés 
+            et de profiter de pique-niques traditionnels face à un coucher de soleil inoubliable.
+        </p>
+        <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f" alt="Surf Polynésie">
+    </div>
+
+    <h2 style="margin-top:80px;">La Polynésie & les Jeux Olympiques 🏅</h2>
+
+<!-- JO -->
+    <!-- SECTION JEUX OLYMPIQUES -->
+<section id="jeux olympiques">
+
+
+    <div class="content">
+        <img src="Photos/JPO PAris 2024.jpg" alt="Vague Teahupo'o">
+        <p>
+            En 2024, la Polynésie Française a accueilli les épreuves de surf 
+            des <strong>Jeux Olympiques de Paris 2024</strong> sur la mythique vague de 
+            <strong>Teahupo’o</strong>, à Tahiti.
+            <br><br>
+            Connue comme l’une des vagues les plus puissantes et spectaculaires au monde,
+            Teahupo’o offre des tubes impressionnants qui attirent les meilleurs surfeurs de la planète.
+            <br><br>
+            Cet événement historique a placé la Polynésie sous les projecteurs mondiaux,
+            révélant au monde entier la beauté exceptionnelle de ses paysages.
+        </p>
+    </div>
+
+    <div class="content">
+        <p>
+            🥇 <strong>Kauli Vaast</strong>, surfeur français originaire de Tahiti,
+            est devenu une figure emblématique de ces Jeux.
+            <br><br>
+            Spécialiste de Teahupo’o depuis son plus jeune âge,
+            il incarne la passion, la maîtrise et l’excellence du surf polynésien.
+            <br><br>
+            Sa performance exceptionnelle a marqué l’histoire du surf olympique
+            et renforcé la fierté de toute la Polynésie Française.
+        </p>
+        <img src="Photos/image JO.webp" alt="Athlète médaille d'or">
+    </div>
+
+    <div class="content">
+        <img src="Photos/bateau.jpg" alt="Océan Polynésie">
+        <p>
+            Au-delà du sport, les Jeux ont mis en lumière
+            l’hospitalité polynésienne, la richesse culturelle locale
+            et l’engagement pour la protection de l’océan.
+            <br><br>
+            Aujourd’hui, Teahupo’o est plus que jamais un symbole mondial du surf,
+            mêlant performance sportive et décor paradisiaque.
+        </p>
+    </div>
+
+
+<footer>
+    © 2026 - Découvrir la Polynésie Française 🌊
+</footer>
+
+</body>
+</html>
