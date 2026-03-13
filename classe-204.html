@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classe 204 — Projets SNT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1b2a;
+      --blue: #1a4f8a;
+      --accent: #e63946;
+      --gold: #f4a261;
+      --light: #f8f5f0;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --class-color: #1a4f8a;
+      --class-color2: #e63946;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--text); }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav-logo {
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.83rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav ul a:hover, nav ul a.active { color: white; }
+
+    /* ── HERO ── */
+    .page-hero {
+      background: var(--navy);
+      padding: 5rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::after {
+      content: '204';
+      position: absolute;
+      right: 3rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: 18rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.03);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    .hero-breadcrumb a:hover { color: white; }
+    .hero-breadcrumb span { color: rgba(255,255,255,0.2); }
+
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero h1 em { font-style: normal; color: var(--gold); }
+
+    .page-hero p {
+      color: rgba(255,255,255,0.55);
+      font-size: 1rem;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    .hero-bar {
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--class-color), var(--class-color2));
+      border-radius: 2px;
+      margin: 1.5rem 0;
+    }
+
+    /* ── PROJECTS GRID ── */
+    .projects-section {
+      padding: 5rem 4rem;
+    }
+
+    .projects-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .projects-section h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(13,27,42,0.1);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(13,27,42,0.06);
+      transition: transform 0.25s, box-shadow 0.25s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(13,27,42,0.13);
+    }
+
+    .project-thumb {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: inherit;
+      filter: brightness(0.85);
+    }
+
+    .project-thumb span {
+      position: relative;
+      z-index: 1;
+      opacity: 0.9;
+    }
+
+    /* Couleurs variées pour chaque groupe */
+    .c1  { background: linear-gradient(135deg, #1a4f8a, #2d6cdf); }
+    .c2  { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+    .c3  { background: linear-gradient(135deg, #2d6a4f, #52b788); }
+    .c4  { background: linear-gradient(135deg, #7b2d8b, #c77dff); }
+    .c5  { background: linear-gradient(135deg, #c9622a, #f4a261); }
+    .c6  { background: linear-gradient(135deg, #0d1b2a, #415a77); }
+    .c7  { background: linear-gradient(135deg, #2196f3, #00bcd4); }
+    .c8  { background: linear-gradient(135deg, #8d6e63, #d7a87a); }
+    .c9  { background: linear-gradient(135deg, #43a047, #a5d6a7); }
+    .c10 { background: linear-gradient(135deg, #e91e63, #f48fb1); }
+    .c11 { background: linear-gradient(135deg, #37474f, #78909c); }
+    .c12 { background: linear-gradient(135deg, #f57f17, #ffd54f); }
+    .c13 { background: linear-gradient(135deg, #ad1457, #ec407a); }
+    .c14 { background: linear-gradient(135deg, #00695c, #4db6ac); }
+
+    .project-info {
+      padding: 1.25rem 1.5rem 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-group {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .project-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .project-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .project-link {
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--blue);
+    }
+
+    .project-card:hover .project-link { color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 2rem 4rem;
+      font-size: 0.83rem;
+    }
+
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      nav ul { display: none; }
+      .page-hero { padding: 3rem 1.5rem 2.5rem; }
+      .projects-section { padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Lycée &nbsp;<span>·</span>&nbsp; SNT</a>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="classe-204.html" class="active">Classe 204</a></li>
+    <li><a href="classe-209.html">Classe 209</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-breadcrumb">
+    <a href="index.html">Accueil</a>
+    <span>/</span>
+    <span>Classe 204</span>
+  </div>
+  <h1>Classe <em>2<sup>de</sup>&nbsp;4</em></h1>
+  <div class="hero-bar"></div>
+  <p>Les projets de sites web réalisés par les élèves de la classe de seconde 4 dans le cadre de l'enseignement SNT.</p>
+</div>
+
+<section class="projects-section">
+  <h2>14 projets</h2>
+
+  <div class="projects-grid">
+
+    <!-- Groupe 1 -->
+    <a href="#" class="project-card">
+      <div class="project-thumb c1"><span>G1</span></div>
+      <div class="project-info">
+        <div class="project-group">Groupe 1</div>
+        <div class="project-title">Titre du projet</div>
+        <p class="project-desc">Courte description du site réalisé par ce groupe. Remplacer par le vrai contenu.</p>
+        <div class="project-link">Visiter le site →</div>
+      </div>
+    </a>
+
+    <!-- Groupe 2 -->
+    <a href="#" class="project-card">
+      <div class="project-thumb c2"><span>G2</span></div>
+      <div class="project-info">
+        <div class="project-group">Groupe 2</div>
+        <div class="project-title">Titre du projet</div>
+        <p class="project-desc">Courte description du site réalisé par ce groupe.</p>
+        <div class="project-link">Visiter le site →</div>
+      </div>
+    </a>
+
+    <!-- Groupe 3 -->
+    <a href="#" class="project-card">
+      <div class="project-thumb c3"><span>G3</span></div>
+      <div class="project-info">
+        <div class="project-group">Groupe 3</div>
+        <div class="project-title">Titre du projet</div>
+        <p class="project-desc">Courte description du site réalisé par ce groupe.</p>
+        <div class="project-link">Visiter le site →</div>
+      </div>
+    </a>
+
+    <!-- Groupe 4 -->
+    <a href="#" class="project-card">
+      <div class="project-thumb c4"><span>G4</span></div>
+      <div class="project-info">
+        <div class="project-group">Groupe 4</div>
+        <div class="project-title">Titre du projet</div>
+        <p class="project-desc">Courte description du site réalisé par ce groupe.</p>
+        <div class="project-link">Visiter le site →</div>
+      </div>
+    </a>
+
+    <!-- Groupe 5 -->
+    <a href="#" class="project-card">
+      <div class="project-thumb c5"><span>G5</span></div>
+      <div class="project-info">
+        <div class="project-group">Groupe 5</div>
+        <div class="project-title">Titre du projet</div>
+        <p class="project-desc">Courte description du site réalisé par ce groupe.</p>
+        <div class="project-link">Visiter le site →</div>
+      </div>
+    </a>
+
+    <!-- Groupe 6 -->
+    <a href="#" class="project-card">
+      <div class="project-thumb c6"><span>G6</span></div>
+      <div class="project-info">
+        <div class="project-group">Groupe 6</div>
+        <div class="project-title">Titre du projet</div>
+        <p class="project-desc">Courte description du site réalisé par ce groupe.</p>
+        <div class="project-link">Visiter le site →</div>
+      </div>
+    </a>
+
+    <!-- Groupe 7 -->
+    <a href="#" class="project-card">
+      <div class="project-thumb c7"><span>G7</span></div>
+      <div class="project-info">
+        <div class="project-group">Groupe 7</div>
+        <div class="project-title">Titre du projet</div>
+        <p class="project-desc">Courte description du site réalisé par ce groupe.</p>
+        <div class="project-link">Visiter le site →</div>
+      </div>
+    </a>
+
+    <!-- Groupe 8 -->
+    <a href="#" class="project-card">
+      <div class="project-thumb c8"><span>G8</span></div>
+      <div class="project-info">
+        <div class="project-group">Groupe 8</div>
+        <div class="project-title">Titre du projet</div>
+        <p class="project-desc">Courte description du site réalisé par ce groupe.</p>
+        <div class="project-link">Visiter le site →</div>
+      </div>
+    </a>
+
+    <!-- Groupe 9 -->
+    <a href="#" class="project-card">
+      <div class="project-thumb c9"><span>G9</span></div>
+      <div class="project-info">
+        <div class="project-group">Groupe 9</div>
+        <div class="project-title">Titre du projet</div>
+        <p class="project-desc">Courte description du site réalisé par ce groupe.</p>
+        <div class="project-link">Visiter le site →</div>
+      </div>
+    </a>
+
+    <!-- Groupe 10 -->
+    <a href="#" class="project-card">
+      <div class="project-thumb c10"><span>G10</span></div>
+      <div class="project-info">
+        <div class="project-group">Groupe 10</div>
+        <div class="project-title">Titre du projet</div>
+        <p class="project-desc">Courte description du site réalisé par ce groupe.</p>
+        <div class="project-link">Visiter le site →</div>
+      </div>
+    </a>
+
+    <!-- Groupe 11 -->
+    <a href="#" class="project-card">
+      <div class="project-thumb c11"><span>G11</span></div>
+      <div class="project-info">
+        <div class="project-group">Groupe 11</div>
+        <div class="project-title">Titre du projet</div>
+        <p class="project-desc">Courte description du site réalisé par ce groupe.</p>
+        <div class="project-link">Visiter le site →</div>
+      </div>
+    </a>
+
+    <!-- Groupe 12 -->
+    <a href="#" class="project-card">
+      <div class="project-thumb c12"><span>G12</span></div>
+      <div class="project-info">
+        <div class="project-group">Groupe 12</div>
+        <div class="project-title">Titre du projet</div>
+        <p class="project-desc">Courte description du site réalisé par ce groupe.</p>
+        <div class="project-link">Visiter le site →</div>
+      </div>
+    </a>
+
+    <!-- Groupe 13 -->
+    <a href="#" class="project-card">
+      <div class="project-thumb c13"><span>G13</span></div>
+      <div class="project-info">
+        <div class="project-group">Groupe 13</div>
+        <div class="project-title">Titre du projet</div>
+        <p class="project-desc">Courte description du site réalisé par ce groupe.</p>
+        <div class="project-link">Visiter le site →</div>
+      </div>
+    </a>
+
+    <!-- Groupe 14 -->
+    <a href="#" class="project-card">
+      <div class="project-thumb c14"><span>G14</span></div>
+      <div class="project-info">
+        <div class="project-group">Groupe 14</div>
+        <div class="project-title">Titre du projet</div>
+        <p class="project-desc">Courte description du site réalisé par ce groupe.</p>
+        <div class="project-link">Visiter le site →</div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <p>Classe 204 — SNT — <a href="index.html">Retour à l'accueil</a></p>
+</footer>
+
+</body>
+</html>
